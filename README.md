@@ -110,12 +110,6 @@ This open-source project combines cutting-edge technologies to enable the retrie
 
 ---
 
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
----
-
 ## Contributions
 
 Contributions are welcome! Please create an issue or submit a pull request to suggest improvements or report bugs.
