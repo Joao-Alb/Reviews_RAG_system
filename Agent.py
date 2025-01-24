@@ -1,4 +1,3 @@
-import openai
 from llama_index.core import SimpleDirectoryReader
 from llama_index.core.node_parser import SentenceSplitter
 from llama_index.llms.openai import OpenAI
@@ -7,7 +6,6 @@ from llama_index.core import SummaryIndex, VectorStoreIndex
 from llama_index.core.tools import QueryEngineTool
 from llama_index.core.query_engine.router_query_engine import RouterQueryEngine
 from llama_index.core.selectors import LLMSingleSelector
-import json
 
 gpt_model = "gpt-4o-mini-2024-07-18"
 embed_model_gpt = "text-embedding-ada-002"
