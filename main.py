@@ -12,9 +12,9 @@ agent = Agent.DocumentQueryEngine(secret.get_openai_api_key())
 
 query_agent = agent.get_router_query_engine(
     "avaliacoes.json",
-    summary_tool_description=prompts["summary_tool_description"],
-    vector_tool_description=prompts["vector_tool_description"],
-    sys_prompt=prompts["sys_prompt"]
+    summary_tool_description=prompts["main"]["summary_tool_description"],
+    vector_tool_description=prompts["main"]["vector_tool_description"],
+    sys_prompt=prompts["main"]["sys_prompt"]
     )
 
 while(1):
