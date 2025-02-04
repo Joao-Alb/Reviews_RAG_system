@@ -31,7 +31,7 @@ def get_reviews(place_id, cut_off, api_key):
         "reviewsLimit":DEFAULT_PARAMS['reviewsLimit']
     }
     response = call_api(endpoint_url, headers, params)
-    data = response.json().get('data', [])
+    data = response.get('data', [])
     if not data:
         return []
     reviews = data[0].get('reviews_data', [])

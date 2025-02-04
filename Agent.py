@@ -10,22 +10,31 @@ from llama_index.core.selectors import LLMSingleSelector
 gpt_model = "gpt-4o-mini-2024-07-18"
 embed_model_gpt = "text-embedding-ada-002"
 
+def initialize_query_engine(api_key, documents_path, prompts):
+    agent = DocumentQueryEngine(api_key)
+    return agent.get_router_query_engine(
+        documents_path,
+        summary_tool_description=prompts["summary_tool_description"],
+        vector_tool_description=prompts["vector_tool_description"],
+        sys_prompt=prompts["sys_prompt"]
+    )
+
 class DocumentQueryEngine():
     
     def __init__(self,key):
         OpenAI.api_key = key
 
-    def __get_documents(self,file_path):
-        return SimpleDirectoryReader(input_files=[file_path]).load_data()
+    def __get_documents(self,documents_path):
+        return SimpleDirectoryReader(input_files=[documents_path]).load_data()
 
-    def get_router_query_engine(self,file_path: str, llm = None, embed_model = None, 
+    def get_router_query_engine(self,documents_path: str, llm = None, embed_model = None, 
                                 summary_tool_description = "Useful for summarization questions related to the documents.",
                                 vector_tool_description = "Useful for retrieving specific context from the documents.",
                                 sys_prompt=""):
         llm = llm or OpenAI(model=gpt_model)
         embed_model = embed_model or OpenAIEmbedding(model=embed_model_gpt)
 
-        documents = self.__get_documents(file_path)
+        documents = self.__get_documents(documents_path)
         
         splitter = SentenceSplitter(chunk_size=1024)
         nodes = splitter.get_nodes_from_documents(documents)
