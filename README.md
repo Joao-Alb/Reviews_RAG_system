@@ -31,8 +31,8 @@ This open-source project combines cutting-edge technologies to enable the retrie
 1. Clone the repository:
 
    ```bash
-   git clone <repository_url>
-   cd <repository_name>
+   git clone https://github.com/Joao-Alb/Reviews_RAG_system
+   cd Reviews_RAG_system
    ```
 
 2. Create a `.env` file to store sensitive information:
